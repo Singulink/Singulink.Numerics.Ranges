@@ -4,7 +4,7 @@
 [![View nuget packages](https://img.shields.io/nuget/v/Singulink.Numerics.Ranges.svg)](https://www.nuget.org/packages/Singulink.Numerics.Ranges/)
 [![Build and Test](https://github.com/Singulink/Singulink.Numerics.Ranges/workflows/build%20and%20test/badge.svg)](https://github.com/Singulink/Singulink.Numerics.Ranges/actions?query=workflow%3A%22build+and+test%22)
 
-**Ranges** provides a range type that for each primitive integer type. Ranges can be intersected, unioned and coalesced. The range types correspond to integer types as follows:
+**Ranges** provides a range type for each primitive integer type. Ranges can be intersected, unioned and coalesced. The range types correspond to integer types as follows:
 - `Range8`: `Byte` / `byte`
 - `SRange8`: `SByte` / `sbyte`
 - `Range16`: `Int16` / `short`
@@ -22,7 +22,7 @@ This package is part of our **Singulink Libraries** collection. Visit https://gi
 
 ## Installation
 
-The package is available on NuGet - simply install the `Singulink.Numerics.BigDecimal` package.
+The package is available on NuGet - simply install the `Singulink.Numerics.Ranges` package.
 
 **Supported Runtimes**: Anywhere .NET Standard 2.1+ is supported, including:
 - .NET Core 3.0+
