@@ -61,7 +61,7 @@ namespace Singulink
         }
 
         /// <summary>
-        /// Initializes a new instance of the <#= type #> structure with the specified start and end value.
+        /// Initializes a new instance of the <#= name #> structure with the specified start and end value.
         /// </summary>
         public <#= name #>(<#= type #> startAndEnd)
         {

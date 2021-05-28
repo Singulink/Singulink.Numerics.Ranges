@@ -36,7 +36,7 @@ namespace Singulink
         }
 
         /// <summary>
-        /// Initializes a new instance of the byte structure with the specified start and end value.
+        /// Initializes a new instance of the Range8 structure with the specified start and end value.
         /// </summary>
         public Range8(byte startAndEnd)
         {
@@ -304,7 +304,7 @@ namespace Singulink
         }
 
         /// <summary>
-        /// Initializes a new instance of the short structure with the specified start and end value.
+        /// Initializes a new instance of the Range16 structure with the specified start and end value.
         /// </summary>
         public Range16(short startAndEnd)
         {
@@ -572,7 +572,7 @@ namespace Singulink
         }
 
         /// <summary>
-        /// Initializes a new instance of the int structure with the specified start and end value.
+        /// Initializes a new instance of the Range32 structure with the specified start and end value.
         /// </summary>
         public Range32(int startAndEnd)
         {
@@ -840,7 +840,7 @@ namespace Singulink
         }
 
         /// <summary>
-        /// Initializes a new instance of the long structure with the specified start and end value.
+        /// Initializes a new instance of the Range64 structure with the specified start and end value.
         /// </summary>
         public Range64(long startAndEnd)
         {
@@ -1108,7 +1108,7 @@ namespace Singulink
         }
 
         /// <summary>
-        /// Initializes a new instance of the sbyte structure with the specified start and end value.
+        /// Initializes a new instance of the SRange8 structure with the specified start and end value.
         /// </summary>
         public SRange8(sbyte startAndEnd)
         {
@@ -1376,7 +1376,7 @@ namespace Singulink
         }
 
         /// <summary>
-        /// Initializes a new instance of the ushort structure with the specified start and end value.
+        /// Initializes a new instance of the URange16 structure with the specified start and end value.
         /// </summary>
         public URange16(ushort startAndEnd)
         {
@@ -1644,7 +1644,7 @@ namespace Singulink
         }
 
         /// <summary>
-        /// Initializes a new instance of the uint structure with the specified start and end value.
+        /// Initializes a new instance of the URange32 structure with the specified start and end value.
         /// </summary>
         public URange32(uint startAndEnd)
         {
@@ -1912,7 +1912,7 @@ namespace Singulink
         }
 
         /// <summary>
-        /// Initializes a new instance of the ulong structure with the specified start and end value.
+        /// Initializes a new instance of the URange64 structure with the specified start and end value.
         /// </summary>
         public URange64(ulong startAndEnd)
         {
