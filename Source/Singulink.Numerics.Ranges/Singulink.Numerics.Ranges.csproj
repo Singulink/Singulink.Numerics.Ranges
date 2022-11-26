@@ -2,15 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Singulink</Authors>
     <PackageProjectUrl>https://github.com/Singulink/Singulink.Numerics.Ranges</PackageProjectUrl>
     <PackageIcon>Singulink Icon 128x128.png</PackageIcon>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>© Singulink. All rights reserved.</Copyright>
     <Description>Range types for each primitive integer type that can be intersected, unioned and coalesced.</Description>
+    <RootNamespace>Singulink.Numerics</RootNamespace>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,6 +28,14 @@
   </ItemGroup>
 
   <ItemGroup>
+      <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="InclusiveRanges.tt">
+      <LastGenOutput>InclusiveRanges.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
     <None Update="Ranges.tt">
       <LastGenOutput>Ranges.cs</LastGenOutput>
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -37,11 +47,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="InclusiveRanges.cs">
+      <DependentUpon>InclusiveRanges.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
     <Compile Update="Ranges.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Ranges.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-
 </Project>
