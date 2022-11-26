@@ -19,23 +19,21 @@ namespace Singulink.Numerics;
 <#
     (string name, string type, string countType)[] ranges = new[]
     {
-        ("Range8", "byte", "int"),
-        ("Range16", "short", "int"),
-        ("Range32", "int", "long"),
-        ("Range64", "long", "ulong"),
-        ("SRange8", "sbyte", "int"),
-        ("URange16", "ushort", "int"),
-        ("URange32", "uint", "long"),
-        ("URange64", "ulong", "ulong"),
+        ("InclusiveRange8", "byte", "int"),
+        ("InclusiveRange16", "short", "int"),
+        ("InclusiveRange32", "int", "long"),
+        ("InclusiveSRange8", "sbyte", "int"),
+        ("InclusiveURange16", "ushort", "int"),
+        ("InclusiveURange32", "uint", "long"),
     };
 
     foreach ((string name, string type, string countType) in ranges) {
 #>
 /// <summary>
-/// Represents a range of <see cref="<#= type #>"/> values.
+/// Represents a range of <see cref="<#= type #>"/> values with an inclusive start and end.
 /// </summary>
-[DebuggerDisplay("[{Start}..{End}), Count: {Count}")]
-public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>>, IAnyRange
+[DebuggerDisplay("[{Start}..{End}], Count: {Count}")]
+public readonly struct <#= name #> : IInclusiveRange<<#= type #>>, IEquatable<<#= name #>>, IAnyRange
 {
     private static EmptyRangeEqualityComparer<<#= name #>>? _emptyEqualityComparer;
 
@@ -43,10 +41,10 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
     private readonly <#= type #> _end;
 
     /// <summary>
-    /// Creates a new instance of the <#= name #> structure with the specified inclusive start and exclusive end value.
+    /// Creates a new instance of the <#= name #> structure with the specified start and inclusive end value.
     /// </summary>
     /// <remarks>
-    /// If the start value is greater than or equal to the end value then the range is considered empty.
+    /// If the start value is greater than the end value then an empty range is created.
     /// </remarks>
     public <#= name #>(<#= type #> start, <#= type #> end)
     {
@@ -55,29 +53,11 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
     }
 
     /// <summary>
-    /// Creates a new instance of the <#= name #> structure with a single value in the range. The value must be less than <see cref="<#= type #>.MaxValue"/>.
+    /// Creates a new instance of the <#= name #> structure with a single value in the range.
     /// </summary>
     public static <#= name #> SingleValue(<#= type #> value)
     {
-        if (value == <#= type #>.MaxValue)
-            Throw.Value_OutOfRange();
-
-        return new <#= name #>(value, (<#= type #>)(value + 1));
-    }
-
-    /// <summary>
-    /// Creates a new instance of the <#= name #> structure with the specified inclusive start and end value. The end value must be less than
-    /// <see cref="<#= type #>.MaxValue"/>.
-    /// </summary>
-    /// <remarks>
-    /// If the start value is greater than the end value then the range is considered empty.
-    /// </remarks>
-    public static <#= name #> Inclusive(<#= type #> start, <#= type #> end)
-    {
-        if (end == <#= type #>.MaxValue)
-            Throw.End_OutOfRange();
-
-        return new <#= name #>(start, (<#= type #>)(end + 1));
+        return new <#= name #>(value, value);
     }
 
     /// <summary>
@@ -91,9 +71,9 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
     public static bool operator !=(<#= name #> x, <#= name #> y) => !x.Equals(y);
 
     /// <summary>
-    /// Gets an empty range with a <see cref="Start"/> value of <c>0</c> and an <see cref="End"/> value of <c>0</c>.
+    /// Gets an empty range with a <see cref="Start"/> value of <see cref="<#= type #>.MaxValue"/> and an <see cref="End"/> value of <c>0</c>.
     /// </summary>
-    public static <#= name #> Empty => default;
+    public static <#= name #> Empty => new <#= name #>(<#= type #>.MaxValue, 0);
 
     /// <summary>
     /// Gets an equality comparer that treats empty ranges as equal, regardless of what their start and end values are.
@@ -101,42 +81,34 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
     public static EqualityComparer<<#= name #>> EmptyEqualityComparer => _emptyEqualityComparer ??= new();
 
     /// <summary>
-    /// Gets the inclusive start value of the range.
+    /// Gets the start of the range.
     /// </summary>
     public <#= type #> Start => _start;
 
     /// <summary>
-    /// Gets the exclusive end value of the range.
+    /// Gets the end of the range.
     /// </summary>
     public <#= type #> End => _end;
 
     /// <summary>
-    /// Gets a value indicating whether the range is empty.
-    /// </summary>
-    public bool IsEmpty => _start >= _end;
-
-    /// <summary>
     /// Gets the number of values in the range.
     /// </summary>
-    public <#= countType #> Count => IsEmpty ? 0 : (<#= countType #>)_end - (<#= countType #>)_start;
+    public <#= countType #> Count => IsEmpty ? 0 : (<#= countType #>)_end - (<#= countType #>)_start + 1;
 
     /// <summary>
-    /// Gets a new range with the specified start value and the same end value as this range. Throws <see cref="InvalidOperationException"/> if this
-    /// range is empty.
+    /// Gets a value indicating whether the range is empty.
     /// </summary>
-    public <#= name #> StartAt(<#= type #> start) => new <#= name #>(start, _end);
+    public bool IsEmpty => _start > _end;
 
     /// <summary>
-    /// Gets a new range with same start value as this range and the specified exclusive end value. Throws <see cref="InvalidOperationException"/> if
-    /// this range is empty.
+    /// Gets a new range with the specified start value and the same end value as this range.
     /// </summary>
-    public <#= name #> EndAt(<#= type #> end) => new <#= name #>(_start, end);
+    public <#= name #> StartAt(<#= type #> start) => new(start, _end);
 
     /// <summary>
-    /// Gets a new range with same start value as this range and the specified inclusive end value. The end value must be less than
-    /// <see cref="<#= type #>.MaxValue"/>. Throws <see cref="InvalidOperationException"/> if this range is empty.
+    /// Gets a new range with same start value as this range and the specified inclusive end value.
     /// </summary>
-    public <#= name #> EndAtInclusive(<#= type #> end) => Inclusive(_start, end);
+    public <#= name #> EndAt(<#= type #> end) => new(_start, end);
 
     /// <summary>
     /// Expands this range to include the given value. If this range is empty then a single value range containing the given value will be returned.
@@ -146,17 +118,17 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
         if (IsEmpty)
             return SingleValue(value);
 
-        if (value >= _end)
-            return Inclusive(_start, value);
+        if (value > _end)
+            return EndAt(value);
 
         if (value < _start)
-            return new <#= name #>(value, _end);
+            return StartAt(value);
 
         return this;
     }
 
     /// <summary>
-    /// Intersects this range with the given range which returns a resulting range that contains only the values present in both ranges.
+    /// Intersects this range with the given range and returns a resulting range that contains only the values present in both ranges.
     /// </summary>
     /// <remarks>
     /// The resulting range will start at the greater <see cref="Start"/> value of ranges and end at the lesser <see cref="End"/> value of the ranges.
@@ -164,8 +136,8 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
     public <#= name #> IntersectWith(<#= name #> range) => new <#= name #>(Math.Max(_start, range._start), Math.Min(_end, range._end));
 
     /// <summary>
-    /// Combines this range with the given range to produce a resulting range that contains all the values from both ranges. An
-    /// <see cref="ArgumentException"/> is thrown if there is a gap between non-empty ranges. If both ranges are empty then the result is <see cref="Empty"/>.
+    /// Combines this range with the given range to produce a resulting range that contains all the values from both ranges. Throws
+    /// <see cref="ArgumentException"/> if there is a gap between non-empty ranges. If both ranges are empty then the result is <see cref="Empty"/>.
     /// </summary>
     public <#= name #> UnionWith(<#= name #> range)
     {
@@ -178,8 +150,8 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
     }
 
     /// <summary>
-    /// Tries to combine this range with the given range to produce a resulting range that contains all the values from both ranges. The operation fails
-    /// and returns false if there is a gap between non-empty ranges. If both ranges are empty then the result is <see cref="Empty"/>.
+    /// Tries to combine this range with the given range to produce a resulting range that contains all the values from both ranges. Returns false if there
+    /// is a gap between non-empty ranges. If both ranges are empty then the result is <see cref="Empty"/>.
     /// </summary>
     public bool TryUnionWith(<#= name #> range, out <#= name #> result)
     {
@@ -244,7 +216,7 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
 
     private static bool NonEmptyTryUnion(<#= name #> previous, <#= name #> next, ref <#= name #> result)
     {
-        if (next._start <= previous._end)
+        if (next._start == <#= type #>.MinValue || next._start - 1 <= previous._end)
         {
             result = new <#= name #>(previous._start, Math.Max(next._end, previous._end));
             return true;
@@ -272,15 +244,18 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
         return false;
     }
 
-    #region Base Method Overrides
+    #region Base Object Method Implementations
 
     /// <summary>
-    /// Determines if this range is equal to the given range. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines if this range is equal to the specified range. Empty ranges are only considered equal if their start and end values match.
     /// </summary>
+    /// <remarks>
+    ///
+    /// </remarks>
     public bool Equals(<#= name #> other) => _start == other._start && _end == other._end;
 
     /// <summary>
-    /// Determines if this range is equal to the given object. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines if this range is equal to the given object.
     /// </summary>
     public override bool Equals(object? obj) => obj is <#= name #> range && Equals(range);
 
@@ -292,12 +267,11 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
     /// <summary>
     /// Returns a string representation of the range.
     /// </summary>
-    /// <returns></returns>
     public override string ToString() => $"{_start}..{_end}";
 
     #endregion
 
-    #region Enumeration
+    #region IEnumerable
 
     /// <summary>
     /// Gets an enumerator for this range.
@@ -334,7 +308,7 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
         /// </summary>
         public bool MoveNext()
         {
-            if (_next < _end)
+            if (_next <= _end && _current != <#= type #>.MaxValue)
             {
                 _current = _next;
                 _next++;
