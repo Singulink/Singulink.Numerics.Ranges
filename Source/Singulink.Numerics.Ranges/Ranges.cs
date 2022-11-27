@@ -60,13 +60,19 @@ public readonly struct Range8 : IRange<byte>, IEquatable<Range8>, IAnyRange
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(Range8 x, Range8 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(Range8 x, Range8 y) => !x.Equals(y);
 
     /// <summary>
@@ -254,12 +260,15 @@ public readonly struct Range8 : IRange<byte>, IEquatable<Range8>, IAnyRange
     #region Base Method Overrides
 
     /// <summary>
-    /// Determines if this range is equal to the given range. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public bool Equals(Range8 other) => _start == other._start && _end == other._end;
 
     /// <summary>
-    /// Determines if this range is equal to the given object. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines if this range is equal to the specified object.
     /// </summary>
     public override bool Equals(object? obj) => obj is Range8 range && Equals(range);
 
@@ -386,13 +395,19 @@ public readonly struct Range16 : IRange<short>, IEquatable<Range16>, IAnyRange
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(Range16 x, Range16 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(Range16 x, Range16 y) => !x.Equals(y);
 
     /// <summary>
@@ -580,12 +595,15 @@ public readonly struct Range16 : IRange<short>, IEquatable<Range16>, IAnyRange
     #region Base Method Overrides
 
     /// <summary>
-    /// Determines if this range is equal to the given range. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public bool Equals(Range16 other) => _start == other._start && _end == other._end;
 
     /// <summary>
-    /// Determines if this range is equal to the given object. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines if this range is equal to the specified object.
     /// </summary>
     public override bool Equals(object? obj) => obj is Range16 range && Equals(range);
 
@@ -712,13 +730,19 @@ public readonly struct Range32 : IRange<int>, IEquatable<Range32>, IAnyRange
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(Range32 x, Range32 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(Range32 x, Range32 y) => !x.Equals(y);
 
     /// <summary>
@@ -906,12 +930,15 @@ public readonly struct Range32 : IRange<int>, IEquatable<Range32>, IAnyRange
     #region Base Method Overrides
 
     /// <summary>
-    /// Determines if this range is equal to the given range. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public bool Equals(Range32 other) => _start == other._start && _end == other._end;
 
     /// <summary>
-    /// Determines if this range is equal to the given object. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines if this range is equal to the specified object.
     /// </summary>
     public override bool Equals(object? obj) => obj is Range32 range && Equals(range);
 
@@ -1038,13 +1065,19 @@ public readonly struct Range64 : IRange<long>, IEquatable<Range64>, IAnyRange
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(Range64 x, Range64 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(Range64 x, Range64 y) => !x.Equals(y);
 
     /// <summary>
@@ -1232,12 +1265,15 @@ public readonly struct Range64 : IRange<long>, IEquatable<Range64>, IAnyRange
     #region Base Method Overrides
 
     /// <summary>
-    /// Determines if this range is equal to the given range. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public bool Equals(Range64 other) => _start == other._start && _end == other._end;
 
     /// <summary>
-    /// Determines if this range is equal to the given object. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines if this range is equal to the specified object.
     /// </summary>
     public override bool Equals(object? obj) => obj is Range64 range && Equals(range);
 
@@ -1364,13 +1400,19 @@ public readonly struct SRange8 : IRange<sbyte>, IEquatable<SRange8>, IAnyRange
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(SRange8 x, SRange8 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(SRange8 x, SRange8 y) => !x.Equals(y);
 
     /// <summary>
@@ -1558,12 +1600,15 @@ public readonly struct SRange8 : IRange<sbyte>, IEquatable<SRange8>, IAnyRange
     #region Base Method Overrides
 
     /// <summary>
-    /// Determines if this range is equal to the given range. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public bool Equals(SRange8 other) => _start == other._start && _end == other._end;
 
     /// <summary>
-    /// Determines if this range is equal to the given object. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines if this range is equal to the specified object.
     /// </summary>
     public override bool Equals(object? obj) => obj is SRange8 range && Equals(range);
 
@@ -1690,13 +1735,19 @@ public readonly struct URange16 : IRange<ushort>, IEquatable<URange16>, IAnyRang
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(URange16 x, URange16 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(URange16 x, URange16 y) => !x.Equals(y);
 
     /// <summary>
@@ -1884,12 +1935,15 @@ public readonly struct URange16 : IRange<ushort>, IEquatable<URange16>, IAnyRang
     #region Base Method Overrides
 
     /// <summary>
-    /// Determines if this range is equal to the given range. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public bool Equals(URange16 other) => _start == other._start && _end == other._end;
 
     /// <summary>
-    /// Determines if this range is equal to the given object. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines if this range is equal to the specified object.
     /// </summary>
     public override bool Equals(object? obj) => obj is URange16 range && Equals(range);
 
@@ -2016,13 +2070,19 @@ public readonly struct URange32 : IRange<uint>, IEquatable<URange32>, IAnyRange
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(URange32 x, URange32 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(URange32 x, URange32 y) => !x.Equals(y);
 
     /// <summary>
@@ -2210,12 +2270,15 @@ public readonly struct URange32 : IRange<uint>, IEquatable<URange32>, IAnyRange
     #region Base Method Overrides
 
     /// <summary>
-    /// Determines if this range is equal to the given range. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public bool Equals(URange32 other) => _start == other._start && _end == other._end;
 
     /// <summary>
-    /// Determines if this range is equal to the given object. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines if this range is equal to the specified object.
     /// </summary>
     public override bool Equals(object? obj) => obj is URange32 range && Equals(range);
 
@@ -2342,13 +2405,19 @@ public readonly struct URange64 : IRange<ulong>, IEquatable<URange64>, IAnyRange
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(URange64 x, URange64 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(URange64 x, URange64 y) => !x.Equals(y);
 
     /// <summary>
@@ -2536,12 +2605,15 @@ public readonly struct URange64 : IRange<ulong>, IEquatable<URange64>, IAnyRange
     #region Base Method Overrides
 
     /// <summary>
-    /// Determines if this range is equal to the given range. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public bool Equals(URange64 other) => _start == other._start && _end == other._end;
 
     /// <summary>
-    /// Determines if this range is equal to the given object. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines if this range is equal to the specified object.
     /// </summary>
     public override bool Equals(object? obj) => obj is URange64 range && Equals(range);
 

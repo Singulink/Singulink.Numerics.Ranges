@@ -22,7 +22,7 @@ public readonly struct InclusiveRange8 : IInclusiveRange<byte>, IEquatable<Inclu
     private readonly byte _end;
 
     /// <summary>
-    /// Creates a new instance of the InclusiveRange8 structure with the specified start and inclusive end value.
+    /// Creates a new instance of the InclusiveRange8 structure with the specified inclusive start and end value.
     /// </summary>
     /// <remarks>
     /// If the start value is greater than the end value then an empty range is created.
@@ -42,13 +42,19 @@ public readonly struct InclusiveRange8 : IInclusiveRange<byte>, IEquatable<Inclu
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(InclusiveRange8 x, InclusiveRange8 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(InclusiveRange8 x, InclusiveRange8 y) => !x.Equals(y);
 
     /// <summary>
@@ -228,10 +234,10 @@ public readonly struct InclusiveRange8 : IInclusiveRange<byte>, IEquatable<Inclu
     #region Base Object Method Implementations
 
     /// <summary>
-    /// Determines if this range is equal to the specified range. Empty ranges are only considered equal if their start and end values match.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
     /// <remarks>
-    ///
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
     /// </remarks>
     public bool Equals(InclusiveRange8 other) => _start == other._start && _end == other._end;
 
@@ -324,7 +330,7 @@ public readonly struct InclusiveRange16 : IInclusiveRange<short>, IEquatable<Inc
     private readonly short _end;
 
     /// <summary>
-    /// Creates a new instance of the InclusiveRange16 structure with the specified start and inclusive end value.
+    /// Creates a new instance of the InclusiveRange16 structure with the specified inclusive start and end value.
     /// </summary>
     /// <remarks>
     /// If the start value is greater than the end value then an empty range is created.
@@ -344,13 +350,19 @@ public readonly struct InclusiveRange16 : IInclusiveRange<short>, IEquatable<Inc
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(InclusiveRange16 x, InclusiveRange16 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(InclusiveRange16 x, InclusiveRange16 y) => !x.Equals(y);
 
     /// <summary>
@@ -530,10 +542,10 @@ public readonly struct InclusiveRange16 : IInclusiveRange<short>, IEquatable<Inc
     #region Base Object Method Implementations
 
     /// <summary>
-    /// Determines if this range is equal to the specified range. Empty ranges are only considered equal if their start and end values match.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
     /// <remarks>
-    ///
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
     /// </remarks>
     public bool Equals(InclusiveRange16 other) => _start == other._start && _end == other._end;
 
@@ -626,7 +638,7 @@ public readonly struct InclusiveRange32 : IInclusiveRange<int>, IEquatable<Inclu
     private readonly int _end;
 
     /// <summary>
-    /// Creates a new instance of the InclusiveRange32 structure with the specified start and inclusive end value.
+    /// Creates a new instance of the InclusiveRange32 structure with the specified inclusive start and end value.
     /// </summary>
     /// <remarks>
     /// If the start value is greater than the end value then an empty range is created.
@@ -646,13 +658,19 @@ public readonly struct InclusiveRange32 : IInclusiveRange<int>, IEquatable<Inclu
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(InclusiveRange32 x, InclusiveRange32 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(InclusiveRange32 x, InclusiveRange32 y) => !x.Equals(y);
 
     /// <summary>
@@ -832,10 +850,10 @@ public readonly struct InclusiveRange32 : IInclusiveRange<int>, IEquatable<Inclu
     #region Base Object Method Implementations
 
     /// <summary>
-    /// Determines if this range is equal to the specified range. Empty ranges are only considered equal if their start and end values match.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
     /// <remarks>
-    ///
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
     /// </remarks>
     public bool Equals(InclusiveRange32 other) => _start == other._start && _end == other._end;
 
@@ -928,7 +946,7 @@ public readonly struct InclusiveSRange8 : IInclusiveRange<sbyte>, IEquatable<Inc
     private readonly sbyte _end;
 
     /// <summary>
-    /// Creates a new instance of the InclusiveSRange8 structure with the specified start and inclusive end value.
+    /// Creates a new instance of the InclusiveSRange8 structure with the specified inclusive start and end value.
     /// </summary>
     /// <remarks>
     /// If the start value is greater than the end value then an empty range is created.
@@ -948,13 +966,19 @@ public readonly struct InclusiveSRange8 : IInclusiveRange<sbyte>, IEquatable<Inc
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(InclusiveSRange8 x, InclusiveSRange8 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(InclusiveSRange8 x, InclusiveSRange8 y) => !x.Equals(y);
 
     /// <summary>
@@ -1134,10 +1158,10 @@ public readonly struct InclusiveSRange8 : IInclusiveRange<sbyte>, IEquatable<Inc
     #region Base Object Method Implementations
 
     /// <summary>
-    /// Determines if this range is equal to the specified range. Empty ranges are only considered equal if their start and end values match.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
     /// <remarks>
-    ///
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
     /// </remarks>
     public bool Equals(InclusiveSRange8 other) => _start == other._start && _end == other._end;
 
@@ -1230,7 +1254,7 @@ public readonly struct InclusiveURange16 : IInclusiveRange<ushort>, IEquatable<I
     private readonly ushort _end;
 
     /// <summary>
-    /// Creates a new instance of the InclusiveURange16 structure with the specified start and inclusive end value.
+    /// Creates a new instance of the InclusiveURange16 structure with the specified inclusive start and end value.
     /// </summary>
     /// <remarks>
     /// If the start value is greater than the end value then an empty range is created.
@@ -1250,13 +1274,19 @@ public readonly struct InclusiveURange16 : IInclusiveRange<ushort>, IEquatable<I
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(InclusiveURange16 x, InclusiveURange16 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(InclusiveURange16 x, InclusiveURange16 y) => !x.Equals(y);
 
     /// <summary>
@@ -1436,10 +1466,10 @@ public readonly struct InclusiveURange16 : IInclusiveRange<ushort>, IEquatable<I
     #region Base Object Method Implementations
 
     /// <summary>
-    /// Determines if this range is equal to the specified range. Empty ranges are only considered equal if their start and end values match.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
     /// <remarks>
-    ///
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
     /// </remarks>
     public bool Equals(InclusiveURange16 other) => _start == other._start && _end == other._end;
 
@@ -1532,7 +1562,7 @@ public readonly struct InclusiveURange32 : IInclusiveRange<uint>, IEquatable<Inc
     private readonly uint _end;
 
     /// <summary>
-    /// Creates a new instance of the InclusiveURange32 structure with the specified start and inclusive end value.
+    /// Creates a new instance of the InclusiveURange32 structure with the specified inclusive start and end value.
     /// </summary>
     /// <remarks>
     /// If the start value is greater than the end value then an empty range is created.
@@ -1552,13 +1582,19 @@ public readonly struct InclusiveURange32 : IInclusiveRange<uint>, IEquatable<Inc
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(InclusiveURange32 x, InclusiveURange32 y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(InclusiveURange32 x, InclusiveURange32 y) => !x.Equals(y);
 
     /// <summary>
@@ -1738,10 +1774,10 @@ public readonly struct InclusiveURange32 : IInclusiveRange<uint>, IEquatable<Inc
     #region Base Object Method Implementations
 
     /// <summary>
-    /// Determines if this range is equal to the specified range. Empty ranges are only considered equal if their start and end values match.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
     /// <remarks>
-    ///
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
     /// </remarks>
     public bool Equals(InclusiveURange32 other) => _start == other._start && _end == other._end;
 

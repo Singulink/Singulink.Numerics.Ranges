@@ -41,7 +41,7 @@ public readonly struct <#= name #> : IInclusiveRange<<#= type #>>, IEquatable<<#
     private readonly <#= type #> _end;
 
     /// <summary>
-    /// Creates a new instance of the <#= name #> structure with the specified start and inclusive end value.
+    /// Creates a new instance of the <#= name #> structure with the specified inclusive start and end value.
     /// </summary>
     /// <remarks>
     /// If the start value is greater than the end value then an empty range is created.
@@ -61,13 +61,19 @@ public readonly struct <#= name #> : IInclusiveRange<<#= type #>>, IEquatable<<#
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(<#= name #> x, <#= name #> y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(<#= name #> x, <#= name #> y) => !x.Equals(y);
 
     /// <summary>
@@ -247,10 +253,10 @@ public readonly struct <#= name #> : IInclusiveRange<<#= type #>>, IEquatable<<#
     #region Base Object Method Implementations
 
     /// <summary>
-    /// Determines if this range is equal to the specified range. Empty ranges are only considered equal if their start and end values match.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
     /// <remarks>
-    ///
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
     /// </remarks>
     public bool Equals(<#= name #> other) => _start == other._start && _end == other._end;
 

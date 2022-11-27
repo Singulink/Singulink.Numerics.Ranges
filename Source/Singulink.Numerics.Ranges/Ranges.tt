@@ -81,13 +81,19 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
     }
 
     /// <summary>
-    /// Determines whether two ranges are equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator ==(<#= name #> x, <#= name #> y) => x.Equals(y);
 
     /// <summary>
-    /// Determines whether two ranges are not equal. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether two ranges are not equal. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public static bool operator !=(<#= name #> x, <#= name #> y) => !x.Equals(y);
 
     /// <summary>
@@ -275,12 +281,15 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
     #region Base Method Overrides
 
     /// <summary>
-    /// Determines if this range is equal to the given range. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines whether this range is equal to the specified range. Empty ranges must have the same start and end values to be considered equal.
     /// </summary>
+    /// <remarks>
+    /// Use <see cref="EmptyEqualityComparer"/> for equality comparisons where empty ranges are considered equal regardless of their start and end values.
+    /// </remarks>
     public bool Equals(<#= name #> other) => _start == other._start && _end == other._end;
 
     /// <summary>
-    /// Determines if this range is equal to the given object. Empty ranges are considered equal to each other, even if they have different start/end values.
+    /// Determines if this range is equal to the specified object.
     /// </summary>
     public override bool Equals(object? obj) => obj is <#= name #> range && Equals(range);
 
