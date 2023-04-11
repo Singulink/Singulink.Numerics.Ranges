@@ -127,20 +127,18 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
     public <#= countType #> Count => IsEmpty ? 0 : (<#= countType #>)_end - (<#= countType #>)_start;
 
     /// <summary>
-    /// Gets a new range with the specified start value and the same end value as this range. Throws <see cref="InvalidOperationException"/> if this
-    /// range is empty.
+    /// Gets a new range with the specified start value and the same end value as this range.
     /// </summary>
     public <#= name #> StartAt(<#= type #> start) => new <#= name #>(start, _end);
 
     /// <summary>
-    /// Gets a new range with same start value as this range and the specified exclusive end value. Throws <see cref="InvalidOperationException"/> if
-    /// this range is empty.
+    /// Gets a new range with same start value as this range and the specified exclusive end value.
     /// </summary>
     public <#= name #> EndAt(<#= type #> end) => new <#= name #>(_start, end);
 
     /// <summary>
     /// Gets a new range with same start value as this range and the specified inclusive end value. The end value must be less than
-    /// <see cref="<#= type #>.MaxValue"/>. Throws <see cref="InvalidOperationException"/> if this range is empty.
+    /// <see cref="<#= type #>.MaxValue"/>.
     /// </summary>
     public <#= name #> EndAtInclusive(<#= type #> end) => Inclusive(_start, end);
 
@@ -296,7 +294,7 @@ public readonly struct <#= name #> : IRange<<#= type #>>, IEquatable<<#= name #>
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.

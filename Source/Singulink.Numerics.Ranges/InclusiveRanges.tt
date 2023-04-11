@@ -268,7 +268,7 @@ public readonly struct <#= name #> : IInclusiveRange<<#= type #>>, IEquatable<<#
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.

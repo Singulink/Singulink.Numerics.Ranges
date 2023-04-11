@@ -249,7 +249,7 @@ public readonly struct InclusiveRange8 : IInclusiveRange<byte>, IEquatable<Inclu
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
@@ -557,7 +557,7 @@ public readonly struct InclusiveRange16 : IInclusiveRange<short>, IEquatable<Inc
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
@@ -865,7 +865,7 @@ public readonly struct InclusiveRange32 : IInclusiveRange<int>, IEquatable<Inclu
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
@@ -1173,7 +1173,7 @@ public readonly struct InclusiveSRange8 : IInclusiveRange<sbyte>, IEquatable<Inc
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
@@ -1481,7 +1481,7 @@ public readonly struct InclusiveURange16 : IInclusiveRange<ushort>, IEquatable<I
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
@@ -1789,7 +1789,7 @@ public readonly struct InclusiveURange32 : IInclusiveRange<uint>, IEquatable<Inc
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.

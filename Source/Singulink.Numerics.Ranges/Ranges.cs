@@ -106,20 +106,18 @@ public readonly struct Range8 : IRange<byte>, IEquatable<Range8>, IAnyRange
     public int Count => IsEmpty ? 0 : (int)_end - (int)_start;
 
     /// <summary>
-    /// Gets a new range with the specified start value and the same end value as this range. Throws <see cref="InvalidOperationException"/> if this
-    /// range is empty.
+    /// Gets a new range with the specified start value and the same end value as this range.
     /// </summary>
     public Range8 StartAt(byte start) => new Range8(start, _end);
 
     /// <summary>
-    /// Gets a new range with same start value as this range and the specified exclusive end value. Throws <see cref="InvalidOperationException"/> if
-    /// this range is empty.
+    /// Gets a new range with same start value as this range and the specified exclusive end value.
     /// </summary>
     public Range8 EndAt(byte end) => new Range8(_start, end);
 
     /// <summary>
     /// Gets a new range with same start value as this range and the specified inclusive end value. The end value must be less than
-    /// <see cref="byte.MaxValue"/>. Throws <see cref="InvalidOperationException"/> if this range is empty.
+    /// <see cref="byte.MaxValue"/>.
     /// </summary>
     public Range8 EndAtInclusive(byte end) => Inclusive(_start, end);
 
@@ -275,7 +273,7 @@ public readonly struct Range8 : IRange<byte>, IEquatable<Range8>, IAnyRange
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
@@ -441,20 +439,18 @@ public readonly struct Range16 : IRange<short>, IEquatable<Range16>, IAnyRange
     public int Count => IsEmpty ? 0 : (int)_end - (int)_start;
 
     /// <summary>
-    /// Gets a new range with the specified start value and the same end value as this range. Throws <see cref="InvalidOperationException"/> if this
-    /// range is empty.
+    /// Gets a new range with the specified start value and the same end value as this range.
     /// </summary>
     public Range16 StartAt(short start) => new Range16(start, _end);
 
     /// <summary>
-    /// Gets a new range with same start value as this range and the specified exclusive end value. Throws <see cref="InvalidOperationException"/> if
-    /// this range is empty.
+    /// Gets a new range with same start value as this range and the specified exclusive end value.
     /// </summary>
     public Range16 EndAt(short end) => new Range16(_start, end);
 
     /// <summary>
     /// Gets a new range with same start value as this range and the specified inclusive end value. The end value must be less than
-    /// <see cref="short.MaxValue"/>. Throws <see cref="InvalidOperationException"/> if this range is empty.
+    /// <see cref="short.MaxValue"/>.
     /// </summary>
     public Range16 EndAtInclusive(short end) => Inclusive(_start, end);
 
@@ -610,7 +606,7 @@ public readonly struct Range16 : IRange<short>, IEquatable<Range16>, IAnyRange
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
@@ -776,20 +772,18 @@ public readonly struct Range32 : IRange<int>, IEquatable<Range32>, IAnyRange
     public long Count => IsEmpty ? 0 : (long)_end - (long)_start;
 
     /// <summary>
-    /// Gets a new range with the specified start value and the same end value as this range. Throws <see cref="InvalidOperationException"/> if this
-    /// range is empty.
+    /// Gets a new range with the specified start value and the same end value as this range.
     /// </summary>
     public Range32 StartAt(int start) => new Range32(start, _end);
 
     /// <summary>
-    /// Gets a new range with same start value as this range and the specified exclusive end value. Throws <see cref="InvalidOperationException"/> if
-    /// this range is empty.
+    /// Gets a new range with same start value as this range and the specified exclusive end value.
     /// </summary>
     public Range32 EndAt(int end) => new Range32(_start, end);
 
     /// <summary>
     /// Gets a new range with same start value as this range and the specified inclusive end value. The end value must be less than
-    /// <see cref="int.MaxValue"/>. Throws <see cref="InvalidOperationException"/> if this range is empty.
+    /// <see cref="int.MaxValue"/>.
     /// </summary>
     public Range32 EndAtInclusive(int end) => Inclusive(_start, end);
 
@@ -945,7 +939,7 @@ public readonly struct Range32 : IRange<int>, IEquatable<Range32>, IAnyRange
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
@@ -1111,20 +1105,18 @@ public readonly struct Range64 : IRange<long>, IEquatable<Range64>, IAnyRange
     public ulong Count => IsEmpty ? 0 : (ulong)_end - (ulong)_start;
 
     /// <summary>
-    /// Gets a new range with the specified start value and the same end value as this range. Throws <see cref="InvalidOperationException"/> if this
-    /// range is empty.
+    /// Gets a new range with the specified start value and the same end value as this range.
     /// </summary>
     public Range64 StartAt(long start) => new Range64(start, _end);
 
     /// <summary>
-    /// Gets a new range with same start value as this range and the specified exclusive end value. Throws <see cref="InvalidOperationException"/> if
-    /// this range is empty.
+    /// Gets a new range with same start value as this range and the specified exclusive end value.
     /// </summary>
     public Range64 EndAt(long end) => new Range64(_start, end);
 
     /// <summary>
     /// Gets a new range with same start value as this range and the specified inclusive end value. The end value must be less than
-    /// <see cref="long.MaxValue"/>. Throws <see cref="InvalidOperationException"/> if this range is empty.
+    /// <see cref="long.MaxValue"/>.
     /// </summary>
     public Range64 EndAtInclusive(long end) => Inclusive(_start, end);
 
@@ -1280,7 +1272,7 @@ public readonly struct Range64 : IRange<long>, IEquatable<Range64>, IAnyRange
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
@@ -1446,20 +1438,18 @@ public readonly struct SRange8 : IRange<sbyte>, IEquatable<SRange8>, IAnyRange
     public int Count => IsEmpty ? 0 : (int)_end - (int)_start;
 
     /// <summary>
-    /// Gets a new range with the specified start value and the same end value as this range. Throws <see cref="InvalidOperationException"/> if this
-    /// range is empty.
+    /// Gets a new range with the specified start value and the same end value as this range.
     /// </summary>
     public SRange8 StartAt(sbyte start) => new SRange8(start, _end);
 
     /// <summary>
-    /// Gets a new range with same start value as this range and the specified exclusive end value. Throws <see cref="InvalidOperationException"/> if
-    /// this range is empty.
+    /// Gets a new range with same start value as this range and the specified exclusive end value.
     /// </summary>
     public SRange8 EndAt(sbyte end) => new SRange8(_start, end);
 
     /// <summary>
     /// Gets a new range with same start value as this range and the specified inclusive end value. The end value must be less than
-    /// <see cref="sbyte.MaxValue"/>. Throws <see cref="InvalidOperationException"/> if this range is empty.
+    /// <see cref="sbyte.MaxValue"/>.
     /// </summary>
     public SRange8 EndAtInclusive(sbyte end) => Inclusive(_start, end);
 
@@ -1615,7 +1605,7 @@ public readonly struct SRange8 : IRange<sbyte>, IEquatable<SRange8>, IAnyRange
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
@@ -1781,20 +1771,18 @@ public readonly struct URange16 : IRange<ushort>, IEquatable<URange16>, IAnyRang
     public int Count => IsEmpty ? 0 : (int)_end - (int)_start;
 
     /// <summary>
-    /// Gets a new range with the specified start value and the same end value as this range. Throws <see cref="InvalidOperationException"/> if this
-    /// range is empty.
+    /// Gets a new range with the specified start value and the same end value as this range.
     /// </summary>
     public URange16 StartAt(ushort start) => new URange16(start, _end);
 
     /// <summary>
-    /// Gets a new range with same start value as this range and the specified exclusive end value. Throws <see cref="InvalidOperationException"/> if
-    /// this range is empty.
+    /// Gets a new range with same start value as this range and the specified exclusive end value.
     /// </summary>
     public URange16 EndAt(ushort end) => new URange16(_start, end);
 
     /// <summary>
     /// Gets a new range with same start value as this range and the specified inclusive end value. The end value must be less than
-    /// <see cref="ushort.MaxValue"/>. Throws <see cref="InvalidOperationException"/> if this range is empty.
+    /// <see cref="ushort.MaxValue"/>.
     /// </summary>
     public URange16 EndAtInclusive(ushort end) => Inclusive(_start, end);
 
@@ -1950,7 +1938,7 @@ public readonly struct URange16 : IRange<ushort>, IEquatable<URange16>, IAnyRang
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
@@ -2116,20 +2104,18 @@ public readonly struct URange32 : IRange<uint>, IEquatable<URange32>, IAnyRange
     public long Count => IsEmpty ? 0 : (long)_end - (long)_start;
 
     /// <summary>
-    /// Gets a new range with the specified start value and the same end value as this range. Throws <see cref="InvalidOperationException"/> if this
-    /// range is empty.
+    /// Gets a new range with the specified start value and the same end value as this range.
     /// </summary>
     public URange32 StartAt(uint start) => new URange32(start, _end);
 
     /// <summary>
-    /// Gets a new range with same start value as this range and the specified exclusive end value. Throws <see cref="InvalidOperationException"/> if
-    /// this range is empty.
+    /// Gets a new range with same start value as this range and the specified exclusive end value.
     /// </summary>
     public URange32 EndAt(uint end) => new URange32(_start, end);
 
     /// <summary>
     /// Gets a new range with same start value as this range and the specified inclusive end value. The end value must be less than
-    /// <see cref="uint.MaxValue"/>. Throws <see cref="InvalidOperationException"/> if this range is empty.
+    /// <see cref="uint.MaxValue"/>.
     /// </summary>
     public URange32 EndAtInclusive(uint end) => Inclusive(_start, end);
 
@@ -2285,7 +2271,7 @@ public readonly struct URange32 : IRange<uint>, IEquatable<URange32>, IAnyRange
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
@@ -2451,20 +2437,18 @@ public readonly struct URange64 : IRange<ulong>, IEquatable<URange64>, IAnyRange
     public ulong Count => IsEmpty ? 0 : (ulong)_end - (ulong)_start;
 
     /// <summary>
-    /// Gets a new range with the specified start value and the same end value as this range. Throws <see cref="InvalidOperationException"/> if this
-    /// range is empty.
+    /// Gets a new range with the specified start value and the same end value as this range.
     /// </summary>
     public URange64 StartAt(ulong start) => new URange64(start, _end);
 
     /// <summary>
-    /// Gets a new range with same start value as this range and the specified exclusive end value. Throws <see cref="InvalidOperationException"/> if
-    /// this range is empty.
+    /// Gets a new range with same start value as this range and the specified exclusive end value.
     /// </summary>
     public URange64 EndAt(ulong end) => new URange64(_start, end);
 
     /// <summary>
     /// Gets a new range with same start value as this range and the specified inclusive end value. The end value must be less than
-    /// <see cref="ulong.MaxValue"/>. Throws <see cref="InvalidOperationException"/> if this range is empty.
+    /// <see cref="ulong.MaxValue"/>.
     /// </summary>
     public URange64 EndAtInclusive(ulong end) => Inclusive(_start, end);
 
@@ -2620,7 +2604,7 @@ public readonly struct URange64 : IRange<ulong>, IEquatable<URange64>, IAnyRange
     /// <summary>
     /// Gets the hash code for this range.
     /// </summary>
-    public override int GetHashCode() => HashCode.Combine(_start, _end);
+    public override int GetHashCode() => (_start, _end).GetHashCode();
 
     /// <summary>
     /// Returns a string representation of the range.
