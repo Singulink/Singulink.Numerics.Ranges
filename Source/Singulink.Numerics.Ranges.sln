@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Singulink.Numerics.Ranges", "Singulink.Numerics.Ranges\Singulink.Numerics.Ranges.csproj", "{05700EC1-0D15-4BA3-9DC2-E1093183F4DC}"
 EndProject
@@ -9,11 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		Directory.Build.props = Directory.Build.props
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4863FAB0-DD1F-47FE-B1FA-5409C55D1D27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Singulink.Numerics.Ranges.Tests", "Singulink.Numerics.Ranges.Tests\Singulink.Numerics.Ranges.Tests.csproj", "{DB6672E7-9A6F-4394-BC6F-AAF3C334FF0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Singulink.Numerics.Ranges.Tests", "Singulink.Numerics.Ranges.Tests\Singulink.Numerics.Ranges.Tests.csproj", "{DB6672E7-9A6F-4394-BC6F-AAF3C334FF0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
